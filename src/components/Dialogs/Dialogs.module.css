@@ -1,0 +1,26 @@
+.dialogs {
+    display: flex;
+    justify-content: space-between;
+    margin: 45px;
+
+}
+
+.dialogItems {
+
+}
+
+.dialogItems .active {
+    color: red;
+}
+
+.dialog {
+
+}
+
+.messages {
+
+}
+
+.message {
+
+}

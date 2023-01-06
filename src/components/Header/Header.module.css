@@ -1,0 +1,15 @@
+.header {
+    grid-area: h;
+    background-color: skyblue;
+    display: flex;
+justify-content: space-between;
+}
+.header img {
+    width:120px;
+    height:60px;
+    border-radius: 25px;
+}
+.loginBlock{
+
+}
+
