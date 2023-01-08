@@ -1,7 +1,8 @@
 import {v1} from "uuid";
 import {ActionsTypes, AppThunk} from "./redux-store";
-import {apiUsers, profileAPI} from "../api/api";
+import {apiUsers, profileAPI, ProfileDataType} from "../api/api";
 import {PostOBJ} from "../components/Profile/MyPosts/MyPosts";
+import {stopSubmit} from "redux-form";
 
 const initialState: profilePageType = {
   posts: [
@@ -88,7 +89,21 @@ export const savePhotoTC = (file: File): AppThunk => {
     }
   }
 }
-
+export const saveProfileDataTC = (value: ProfileDataType): AppThunk => {
+  return async (dispatch) => {
+    let response = await profileAPI.updateProfileData(value)
+    try {
+      if (response.data.resultCode === 0) {
+        dispatch(getUserProfile('23704'))
+      } else {
+        dispatch(stopSubmit("contacts", {_error: response.data.messages[0]}))
+      alert(response.data.messages[0])
+      }
+    } catch (err) {
+      console.log(err)
+    }
+  }
+}
 
 //types
 export type profilePageType = {

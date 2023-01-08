@@ -12,7 +12,7 @@ import usersReducer, {
   SetUsersACType, ToggleFollowingProgressACType, ToggleIsFetchingACType,
   UnFollowACType
 } from "./usersReducer";
-import authReducer, {logOutACType, SetAuthUserDataACTYPE} from "./authReducer";
+import authReducer, {GetCaptchaUrlActionType, logOutACType, SetAuthUserDataACTYPE} from "./authReducer";
 import thunkMiddleware, {ThunkAction} from "redux-thunk"
 
 let reducers = combineReducers({
@@ -45,5 +45,6 @@ export type ActionsTypes =
   | SetStatusActionType
   | logOutACType
   | DeletePostActionType
-| SavePhotoSuccessActionType
+  | SavePhotoSuccessActionType
+  | GetCaptchaUrlActionType
 

@@ -45,28 +45,50 @@ export const profileAPI = {
         return instance.get(`profile/status/${userId}`)
     },
     updateStatus(status:string){
-        return instance.put(`/profile/status`, {status})
+        return instance.put(`profile/status`, {status})
     },
     savePhoto(photo:any){
         const formData = new FormData()
         formData.append("image", photo)
-        return instance.put(`/profile/photo`, formData, {
+        return instance.put(`profile/photo`, formData, {
             headers:{
                 'Content-Type': 'multipart/form-data'
             }
         })
+    },
+    updateProfileData(data:ProfileDataType){
+        return instance.put(`profile`, data)
+    },
+}
+export type ProfileDataType = {
+    userId?: number
+    aboutMe:string
+    lookingForAJob: boolean
+    lookingForAJobDescription: string
+    fullName: string
+    contacts: {
+        github: string
+        vk: string
+        facebook: string
+        instagram: string
+        twitter: string
     }
 }
-
 export const authAPI = {
     me(){
         return instance.get('auth/me')
     },
     login(email:string, password:string, rememberMe?:boolean){
-        return instance.post('/auth/login', {email,password, rememberMe})
+        return instance.post('auth/login', {email,password, rememberMe})
     },
     logout(){
-        return instance.delete('/auth/login')
+        return instance.delete('auth/login')
+    }
+}
+
+export const securityAPI = {
+    getCaptchaURL(){
+        return instance.get('security/get-captcha-url')
     }
 }
 
